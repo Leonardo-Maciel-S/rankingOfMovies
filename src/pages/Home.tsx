@@ -4,6 +4,9 @@ const moviesURL: string = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 import type { Movie } from "../types/movie";
+import MovieCard from "../components/MovieCard";
+
+import "./MoviesGrid.css";
 
 const Home = () => {
 	const [topMovies, setTopMovies] = useState<Movie[]>([]);
@@ -26,7 +29,7 @@ const Home = () => {
 			<div className="movies-container">
 				{topMovies?.length > 0 &&
 					topMovies.map((movie) => {
-						return <p key={movie.id}>{movie.title}</p>;
+						return <MovieCard key={movie.id} movie={movie} />;
 					})}
 			</div>
 		</div>
