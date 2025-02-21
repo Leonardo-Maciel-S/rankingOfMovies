@@ -13,7 +13,7 @@ const Search = () => {
 	const [movies, setMovies] = useState<Movie[]>([]);
 	const query = searchParams.get("q");
 
-	const getTopRatedMovies = async (url: string) => {
+	const getSearchMovies = async (url: string) => {
 		const res = await fetch(url);
 		const data = await res.json();
 
@@ -23,10 +23,9 @@ const Search = () => {
 	useEffect(() => {
 		const searchWithQueryURL = `${searchURL}?${apiKey}&query=${query}`;
 		console.log(searchWithQueryURL);
-		getTopRatedMovies(searchWithQueryURL);
-	}, []);
+		getSearchMovies(searchWithQueryURL);
+	}, [query]);
 
-	console.log(query);
 	return (
 		<div className="container">
 			<h2 className="title">
